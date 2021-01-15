@@ -25,7 +25,7 @@ const ComicDetail = () => {
     getComic();
   }, []);
 
-  const { character_credits, team_credits, location_credits } = comic;
+  const { image, character_credits, team_credits, location_credits } = comic;
   console.log(character_credits);
   console.log(team_credits);
   console.log(location_credits);
@@ -34,12 +34,13 @@ const ComicDetail = () => {
     <>
       <h1>Comic Detail</h1>
 
-      <h4>Characters</h4>
-
       {loading ? (
         <Spinner />
       ) : (
         <>
+          <img src={image.original_url} alt="" width="250" />
+
+          <h4>Characters</h4>
           <ul>
             {character_credits.map((character) => (
               <li key={character.id}>{character.name}</li>
